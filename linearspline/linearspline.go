@@ -1,6 +1,6 @@
 package main
 
-func linearSpline(x []float64, h float64, X, Y []float64, f func(x float64) float64) {
+func linearSpline(x, y []float64, h float64, X, Y []float64) {
 	n := len(x)
 	j := 0
 
@@ -8,7 +8,7 @@ func linearSpline(x []float64, h float64, X, Y []float64, f func(x float64) floa
 		var yn, xn float64
 
 		for xn = x[i]; xn < x[i+1]; xn += h {
-			yn = f(xn)
+			yn = (y[i+1]-y[i])*(xn-x[i])/(x[i+1]-x[i]) + y[i]
 			Y[j] = yn
 			X[j] = xn
 

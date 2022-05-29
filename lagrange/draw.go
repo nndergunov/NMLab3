@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/Arafatk/glot"
 	"log"
+
+	"github.com/Arafatk/glot"
 )
 
 func drawTwoDimensionalGraph(x, y []float64) {

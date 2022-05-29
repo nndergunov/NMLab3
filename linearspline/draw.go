@@ -16,8 +16,8 @@ func drawTwoDimensionalGraph(x, y []float64) {
 	plot.SetXLabel("X")
 	plot.SetYLabel("Y")
 
-	plot.SetXrange(1, 6)
-	plot.SetYrange(-1, 5000000)
+	// plot.SetXrange(1, 6)
+	// plot.SetYrange(-1, 5000000)
 
 	plot.SavePlot("splineGraph.png")
 }

@@ -14,10 +14,16 @@ func f(x float64) float64 {
 func main() {
 	var N int
 
-	h := 0.01
+	h := 0.00005
 
 	x := []float64{1, 2, 3, 4, 5, 6}
 	n := len(x)
+
+	y := make([]float64, n)
+
+	for i := 0; i < n; i++ {
+		y[i] = f(x[i])
+	}
 
 	for i := 0; i < n-1; i++ {
 		N += int((x[i+1] - x[i]) / h)
@@ -30,7 +36,7 @@ func main() {
 	Y := make([]float64, N)
 	X := make([]float64, N)
 
-	linearSpline(x, h, X, Y, f)
+	linearSpline(x, y, h, X, Y)
 
 	fp, err := os.Create("linearSpline.txt")
 	if err != nil {
@@ -44,5 +50,5 @@ func main() {
 		}
 	}
 
-	drawTwoDimensionalGraph(X, Y)
+	drawTwoDimensionalGraph(X[:N-1], Y[:N-1])
 }
