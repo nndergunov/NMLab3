@@ -23,6 +23,8 @@ func main() {
 		y[i-1] = f(float64(i))
 	}
 
+	pol := buildPolynomial(x, y)
+
 	for i := resNumber + 1; i <= N; i++ {
 		y = append(y, lagrange(x, y, float64(i)))
 		x = append(x, float64(i))
@@ -32,6 +34,8 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
+
+	fp.WriteString(pol)
 
 	for i := 0; i < N; i++ {
 		_, err = fp.WriteString(fmt.Sprintf("%f\t%f\n", x[i], y[i]))
